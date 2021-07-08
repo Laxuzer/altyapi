@@ -1,11 +1,7 @@
-const { Client, Message, Channel, User, Guild } = require("discord.js");
-const Discord = require("discord.js");
-
 class Command {
 
     /**
-     * 
-     * @param {{run: (ctx: import("../classes/Ctx")) => Promise<void> | void, name: string, aliases?: string[], category?: string, description?: string, usage?: string[], enabled: boolean, nsfw?: boolean, cooldown?: Number, permissions?: { developerOnly?: Boolean, ownerOnly?: Boolean, user?: import("discord.js").PermissionString[], bot?: import("discord.js").PermissionString[]}, subCommands?: [{run: (ctx: import("./Context")) => Promise<void> | void, rawName: string, name?: string, aliases?: string[], description?: string, usage?: string[]}], settings?: {[key: any]}}} param0
+     * @param {{run: (client: import('./Client'), message: import('discord.js').Message, args: string[], ctx: import("./Ctx")) => Promise<void> | void, name: string, aliases?: string[], category?: string, description?: string, usage?: string[], enabled: boolean, nsfw?: boolean, cooldown?: Number, permissions?: { developerOnly?: Boolean, ownerOnly?: Boolean, user?: import("discord.js").PermissionString[], bot?: import("discord.js").PermissionString[]}, subCommands?: [{run: (ctx: import("./Context")) => Promise<void> | void, rawName: string, name?: string, aliases?: string[], description?: string, usage?: string[]}], settings?: {[key: any]}}} param0
      */
     constructor({
         name = "empty",

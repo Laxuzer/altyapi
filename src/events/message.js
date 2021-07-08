@@ -80,7 +80,7 @@ module.exports = class MessageEvent extends Event {
             } else {
                 try {
                     let Context = new Ctx(message, UPrefix, this.client);
-                    cmd.run(Context);
+                    cmd.run(Context.client, Context.message, Context);
                 } catch (error) {
                     this.client.ErrorHandler.error({ errorCode: 'CmdRunError', error: error.message, params: [cmd.name]})
                 }
@@ -88,7 +88,7 @@ module.exports = class MessageEvent extends Event {
         } else {
             try {
                 let Context = new Ctx(message, UPrefix, this.client);
-                cmd.run(Context);
+                cmd.run(Context.client, Context.message, Context.input.args, Context);
             } catch (error) {
                 this.client.ErrorHandler.error({ errorCode: 'CmdRunError', error: error.message, params: [cmd.name]})
             }
