@@ -47,6 +47,6 @@ Tek bir parametre ile `bütün herşeye` erişim sağlayabilirsiniz.
 - `src/handlers/functionHandler.js` dosyasında hazır functionlar bulunmaktadır.
 - Functionlara dilerseniz `ekleme` yapabilir veya `çıkarabilirsiniz`.
 
-Logger ve EventEmitter https://github.com/KahveKokusu/PeriExtension/ 'dan alınmıştır.
+Bazı kodlar [KahveKokusu](https://github.com/KahveKokusu)'ndan alınmıştır.
 
 -- [Laxuzer#0480](https://discord.com/users/576749207084466197)
