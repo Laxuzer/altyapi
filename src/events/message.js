@@ -79,19 +79,30 @@ module.exports = class MessageEvent extends Event {
                 //bot ile başlayanlar 'bot' dur. ona göre sistem yapabilirsiniz.
             } else {
                 try {
-                    let Context = new Ctx(message, UPrefix, this.client);
-                    cmd.run(Context.client, Context.message, Context.input.args, Context);
+                    runCmd(this.client);
                 } catch (error) {
                     this.client.ErrorHandler.error({ errorCode: 'CmdRunError', error: error.message, params: [cmd.name]})
                 }
             };
         } else {
             try {
-                let Context = new Ctx(message, UPrefix, this.client);
-                cmd.run(Context.client, Context.message, Context.input.args, Context);
+                runCmd(this.client);
             } catch (error) {
                 this.client.ErrorHandler.error({ errorCode: 'CmdRunError', error: error.message, params: [cmd.name]})
             }
         };
+        function runCmd(client) {
+            let Context = new Ctx(message, UPrefix, client, cmd.name);
+            if (cmd.subCommands.length >= 1) {
+                let CMD = cmd.subCommands.find(e => e.aliases.includes(`${Context.input.args[0]}`.toLowerCase()) || e.rawName == `${Context.input.args[0]}`.toLowerCase());
+                if (CMD) {
+                    CMD.run(new Ctx(message, UPrefix, client, cmd.name, true));
+                } else {
+                    cmd.run(Context);
+                }
+            } else {
+                cmd.run(Context);
+            }
+        }
     }
 }
