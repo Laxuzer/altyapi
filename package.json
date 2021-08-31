@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.0.0-dev.2e078e4.1625529824",
+    "discord.js": "^13.1.0",
     "discord.js-buttons": "^1.0.0",
     "lowdb": "^1.0.0",
     "ms": "^2.1.3",
