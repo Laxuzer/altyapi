@@ -10,7 +10,7 @@ module.exports = class Eval extends Command {
             permissions: {
                 developerOnly: true
             },
-            run: async (client, message, args, ctx) => {
+            run: async (ctx) => {
                 let z1 = Date.now();
                 if (!ctx.client.config.devs.includes(ctx.author.id)) return;
             
