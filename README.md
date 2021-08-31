@@ -1,5 +1,7 @@
 # Temiz Altyapı
 
+[Discord Sunucum](https://discord.gg/VUNbq4SwxY)
+
 # Config
 - Botu çalıştırmadan önce `src/config.json`'u doldurmalısınız.
 
