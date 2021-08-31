@@ -1,8 +1,8 @@
-const { Message, TextChannel, User, Guild, GuildMember, MessageAttachment } = require("discord.js");
+const { Message, TextChannel, User, Guild, GuildMember, MessageAttachment, DiscordAPIError, MessageEmbed } = require("discord.js");
 const Client = require('./Client');
 
 class Input {
-    constructor(message, prefix) {
+    constructor(message, prefix, sub) {
         let args = message.content.split(' ').slice(1);
 
         /**
@@ -18,7 +18,7 @@ class Input {
         /**
          * @type {Array<String>}
          */
-        this.args = args.filter(e => !e.startsWith('--'))
+        this.args = sub ? args.slice(1).filter(e => !e.startsWith('--')):args.filter(e => !e.startsWith('--'))
 
         /**
          * @type {Array<String>}
@@ -39,7 +39,7 @@ class Input {
 
 
 class Context {
-    constructor(message, prefix, client) {
+    constructor(message, prefix, client, cmdName, sub = false) {
         /**
          * @type {Client}
          * @returns {Client}
@@ -81,12 +81,16 @@ class Context {
          */
         this.member = message.member || null;
 
-        let In = new Input(message, prefix);
+        let In = new Input(message, prefix, sub);
         /**
          * @returns {Input}
          */
         this.input = In;
     };
+
+    emoji(emojiname) {
+        return this.client.emoji.get(emojiname);
+    }
 
     /**
      * @name sendMessage
