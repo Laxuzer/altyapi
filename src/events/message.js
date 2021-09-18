@@ -46,15 +46,15 @@ module.exports = class MessageEvent extends Event {
                 };
             };
     
-            if (cmd.permission.member) {
-                if (cmd.permission.member.guild) {
-                    if (!cmd.permission.member.guild.some(a => message.member.hasPermission(a))) {
+            if (cmd.permission.user) {
+                if (cmd.permission.user.guild) {
+                    if (!cmd.permission.user.guild.some(a => message.member.hasPermission(a))) {
                         passed.push('mGuild');
                     };
                 };
     
-                if (cmd.permission.member.channel) {
-                    if (!cmd.permission.member.channel.some(a => message.channel.permissionFor(message.member).hasPermission(a))) {
+                if (cmd.permission.user.channel) {
+                    if (!cmd.permission.user.channel.some(a => message.channel.permissionFor(message.member).hasPermission(a))) {
                         passed.push('mChannel');
                     };
                 };
