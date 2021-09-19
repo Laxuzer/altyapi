@@ -32,7 +32,7 @@ Tek bir parametre ile `bütün herşeye` erişim sağlayabilirsiniz.
         - cleanContent
 
 # Client Info
-- `src/classes/Client.js` dosyasında class adını **botunuzun adıyla** değiştirebilirsiniz.
+- `src/base/Client.js` dosyasında class adını **botunuzun adıyla** değiştirebilirsiniz.
 - Client özel olduğu için kod yazarken size rahatlık sağlayacaktır.
 
 # Command Info

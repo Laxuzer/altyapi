@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
-const SuperBot = require('./src/classes/Client');
+const SuperBot = require('./src/base/Client');
 const client = new SuperBot();
-require('./src/handlers/handler')(client);
+const Handler = new (require('./src/handlers/handler'))(client);
+Handler.init();
 
 client.login(client.config.token)
     .then(() => client.logger.templates.Log('Discord', 'Bot Aktif!'))

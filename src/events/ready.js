@@ -1,16 +1,15 @@
-const Event = require('../classes/Event')
+const Event = require('../base/Event')
 
 module.exports = class ReadyEvent extends Event {
     constructor(client) {
-        super(client, {
+        super({
             name: 'ready',
-            enabled: true
+            client: client,
+            enabled: true,
+            run: async () => {
+                const { Emoji } = this.client;
+                Emoji.init(this.client);
+            }
         })
-    }
-
-    run() {
-        const { Emoji } = this.client;
-
-        Emoji.init(this.client);
     }
 }
