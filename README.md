@@ -49,6 +49,6 @@ Tek bir parametre ile `bütün herşeye` erişim sağlayabilirsiniz.
 - `src/handlers/functionHandler.js` dosyasında hazır functionlar bulunmaktadır.
 - Functionlara dilerseniz `ekleme` yapabilir veya `çıkarabilirsiniz`.
 
-Database modülü olarak ervel.db kullanabilirsiniz.
+Database modülü olarak [ervel.db](https://www.npmjs.com/package/ervel.db) kullanabilirsiniz.
 
 -- [Laxuzer#0480](https://discord.com/users/576749207084466197)
