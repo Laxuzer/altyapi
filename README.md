@@ -23,6 +23,7 @@ Tek bir parametre ile `bütün herşeye` erişim sağlayabilirsiniz.
     - User ([Discord.User](https://discord.js.org/#/docs/main/stable/class/User))
     - Author ([Discord.User](https://discord.js.org/#/docs/main/stable/class/User))
     - Member ([Discord.GuildMember](https://discord.js.org/#/docs/main/stable/class/GuildMember))
+    - [Find](src/base/Ctx.js:80:5)
     - Input
         - Prefix
         - Flags `(-- ile başlayanlar --full gibi)`
