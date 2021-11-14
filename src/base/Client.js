@@ -4,7 +4,6 @@ module.exports = class SuperBot extends Client {
     constructor() {
         const CommandHandler = require('./CommandHandler')
         const Logger = require('./Logger')
-        const Events = require('./EventEmitter')
         const Emoji = require('./Emoji')
         const ErrorHandler = require('./ErrorHandler')
         const low = require('lowdb'); 
@@ -20,7 +19,6 @@ module.exports = class SuperBot extends Client {
         this.CommandHandler = new CommandHandler(this)
         this.ErrorHandler = new ErrorHandler()
         this.logger = new Logger()
-        this.events = new Events()
         this.Emoji = new Emoji(this)
         this.db = db;
         this.config = require('../config.json');

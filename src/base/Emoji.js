@@ -5,11 +5,11 @@ class Emoji {
     constructor(client) {
         this.collection = new Collection();
         this.json = {};
-        this.array = this.collection.toJSON();
+        this.array = [];
     }
 
     get(ename) {
-        if (!ename) return 'Emoji not entered'
+        if (!ename) return 'Emoji girilmedi'
         return this.collection.get(ename);
     }
 
@@ -19,10 +19,10 @@ class Emoji {
         guilds.forEach((p) => {
             client.guilds.cache.get(p).emojis.cache.forEach((e) => {
                 this.collection.set(e.name, `${e}`);
+                this.json[e.name] = `${e}`;
             });
         });
         this.array = this.collection.toJSON();
-        this.collection.forEach((e, a) => this.json[a] = e);
     }
 }
 

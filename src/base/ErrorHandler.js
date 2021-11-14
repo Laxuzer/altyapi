@@ -15,7 +15,8 @@ class ErrorHandler {
         let data = {
             ClientLogin: 'Lütfen girdiğiniz tokeni kontrol edin.',
             CmdLoadError: `${options.params[0]} adlı komut yüklenemedi lütfen komutu kontrol edin! Alınan hata: ${Logger.glue(options.error, Logger.colors.red)}`,
-            CmdRunError: `${options.params[0]} adlı komut yürütülürken bir hatayla karşılaşıldı. Alınan hata: ${Logger.glue(options.error, Logger.colors.red)}`
+            CmdRunError: `${options.params[0]} adlı komut yürütülürken bir hatayla karşılaşıldı. Alınan hata: ${Logger.glue(options.error, Logger.colors.red)}`,
+            SlashLoadError: `${options.params[0]} adlı komut yüklenirken bir hata oluştu! Alınan hata: ${Logger.glue(options.error, Logger.colors.red)}`
         };
 
         return data[options.errorCode];
