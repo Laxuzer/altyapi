@@ -46,7 +46,7 @@ class CommandHandler {
             const checkCommandLoaded = require.cache[require.resolve(`.${commandPath}${path.sep}${commandName}`)];
             if (checkCommandLoaded?.loaded) delete require.cache[require.resolve(`.${commandPath}${path.sep}${commandName}`)];
             const props = new (require(`.${commandPath}${path.sep}${commandName}`));
-            this.client.logger.templates.Log('CommandHandler', `Loading Command: ${props.name}. 👌`, "log");
+            this.client.logger.log('CommandHandler', `Loading Command: ${props.name}. 👌`, "log");
             props.location = commandPath;
             props.fileName = commandName;
             if (props.init) {
