@@ -32,7 +32,7 @@ class ErrorHandler {
         }
         let out = this.resolveError(options);
         this.errors.push(options);
-        Logger.templates.ErrorLog(options.errorCode, Logger.glue(out, Logger.colors.yellow), { TitleColor: 'red' });
+        Logger.errorLog(options.errorCode, Logger.glue(out, Logger.colors.yellow), { TitleColor: 'red' });
     };
 };
 
