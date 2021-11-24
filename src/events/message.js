@@ -29,44 +29,44 @@ module.exports = class MessageEvent extends Event {
                     cmd = this.client.CommandHandler.commands.get(this.client.CommandHandler.aliases.get(command));
                 } else return;
             
-                if (cmd.permission) {
-                    if (cmd.permission.bot) {
-                        if (cmd.permission.bot.channel) {
-                            if (!cmd.permission.bot.channel.some(a => message.channel.permissionFor(message.guild.me).hasPermission(a))) {
+                if (cmd.permissions) {
+                    if (cmd.permissions.bot) {
+                        if (cmd.permissions.bot.channel) {
+                            if (!cmd.permissions.bot.channel.some(a => message.channel.permissionFor(message.guild.me).hasPermission(a))) {
                                 passed.push('botChannel');
                             };
                         };
-                        if (cmd.permission.bot.guild) {
-                            if (!cmd.permission.bot.channel.some(a => message.guild.me.hasPermission(a))) {
+                        if (cmd.permissions.bot.guild) {
+                            if (!cmd.permissions.bot.channel.some(a => message.guild.me.hasPermission(a))) {
                                 passed.push('botGuild');
                             };
                         };
                     };
             
-                    if (cmd.permission.member) {
-                        if (cmd.permission.member.guild) {
-                            if (!cmd.permission.member.guild.some(a => message.member.hasPermission(a))) {
+                    if (cmd.permissions.member) {
+                        if (cmd.permissions.member.guild) {
+                            if (!cmd.permissions.member.guild.some(a => message.member.hasPermission(a))) {
                                 passed.push('mGuild');
                             };
                         };
             
-                        if (cmd.permission.member.channel) {
-                            if (!cmd.permission.member.channel.some(a => message.channel.permissionFor(message.member).hasPermission(a))) {
+                        if (cmd.permissions.member.channel) {
+                            if (!cmd.permissions.member.channel.some(a => message.channel.permissionFor(message.member).hasPermission(a))) {
                                 passed.push('mChannel');
                             };
                         };
                     };
             
-                    if (cmd.permission.modRole) {
+                    if (cmd.permissions.modRole) {
                         //
                     };
             
-                    if (cmd.permission.developerOnly) {
+                    if (cmd.permissions.developerOnly) {
                         if (!this.client.config.devs.includes(message.author.id)) {
                             passed.push('mDev')
                         };
                     };
-                    if (cmd.permission.ownerOnly) {
+                    if (cmd.permissions.ownerOnly) {
                         if (message.guild.owner.id !== message.author.id) {
                             passed.push('mOwner')
                         };
