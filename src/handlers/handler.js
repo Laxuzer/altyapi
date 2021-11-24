@@ -10,7 +10,7 @@ module.exports = class MainHandler {
     async init() {
         require('./manual/functionHandler')(this.client);
         const handlers = await readdirSync('./src/handlers/auto');
-        this.client.logger.templates.Log('Handler', `Loading a total of ${handlers.length} handlers.`, { TitleColor: 'cyan' });
+        this.client.logger.log('Handler', `Loading a total of ${handlers.length} handlers.`, { TitleColor: 'cyan' });
         for (const handler of handlers) {
             const checkCommandLoaded = require.cache[require.resolve(`./auto/${handler}`)];
             if (checkCommandLoaded?.loaded) delete require.cache[require.resolve(`./auto/${handler}`)];
@@ -18,7 +18,7 @@ module.exports = class MainHandler {
             const Handler = new Event(this.client);
             if (!Handler.enabled) return;
             Handler.run(this.client);
-            this.client.logger.templates.Log('Handler', `Loading Handler: ${Handler.name}. 👌`, { TitleColor: 'cyan' });
+            this.client.logger.log('Handler', `Loading Handler: ${Handler.name}. 👌`, { TitleColor: 'cyan' });
             delete require.cache[require.resolve(`./auto/${handler}`)];
         }
     }
