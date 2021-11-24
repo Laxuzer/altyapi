@@ -2,7 +2,11 @@ const { Message, TextChannel, User, Guild, GuildMember, MessageAttachment, Messa
 const Client = require('./Client');
 
 class Input {
-    constructor(message, prefix, sub) {
+    /**
+     * @param {{ message: Message, prefix: String, subCommand: Boolean }} opt 
+     */
+    constructor(opt = { message, prefix, subCommand: false }) {
+        const { message, prefix, subCommand } = opt;
         let args = message.content.split(' ').slice(1);
 
         /**
@@ -18,7 +22,7 @@ class Input {
         /**
          * @type {Array<String>}
          */
-        this.args = sub ? args.slice(1).filter(e => !e.startsWith('--')):args.filter(e => !e.startsWith('--'))
+        this.args = subCommand == true ? args.slice(1).filter(e => !e.startsWith('--')): args.filter(e => !e.startsWith('--'))
 
         /**
          * @type {Array<String>}
@@ -39,7 +43,13 @@ class Input {
 
 
 class Context {
-    constructor(message, prefix, client, sbCmd = false) {
+    /**
+     * @param {{ message: Message, prefix: String, client: import('./Client'), subCommand: Boolean }} opt
+     */
+    constructor(opt = { message, prefix, client, subCommand: false }) {
+        const { message, prefix, client, subCommand } = opt;
+        const input = new Input({ message, prefix, subCommand });
+
         /**
          * @type {Client}
          * @returns {Client}
@@ -64,9 +74,7 @@ class Context {
         /** @type {GuildMember} */
         this.member = message.member || null;
 
-        this.input = new Input(message, prefix, sbCmd);
-        
-        this.subCommand = sbCmd;
+        this.input = input;
         
         this.slash = false;
 
