@@ -22,14 +22,14 @@ class CommandHandler {
 
     async init() {
         const directories = await readdirSync("./src/commands/");
-        this.client.logger.templates.Log('CommandHandler', `Loading a total of ${directories.length} categories.`);
+        this.client.logger.log('CommandHandler', `Loading a total of ${directories.length} categories.`);
         directories.forEach(async (dir) => {
             const commands = await readdirSync("./src/commands/" + dir + "/");
             commands.filter((cmd) => cmd.split(".").pop() === "js").forEach((cmd) => {
                 const response = this.loadCommand("./commands/" + dir, cmd);
                 if (response) {
                     if (typeof response == 'string')
-                        this.client.logger.templates.Log('CommandHandler', response);
+                        this.client.logger.log('CommandHandler', response);
                     else
                         this.client.ErrorHandler.error({
                             params: [cmd],
