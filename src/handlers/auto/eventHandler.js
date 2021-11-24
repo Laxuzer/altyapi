@@ -1,7 +1,7 @@
 const Handler = require("../../base/Handler");
 const { readdirSync } = require('fs');
 
-module.exports = class CmdHandler extends Handler {
+module.exports = class EventHandler extends Handler {
     constructor(client) {
         super({
             name: 'EventHandler',
