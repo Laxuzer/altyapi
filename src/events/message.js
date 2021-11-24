@@ -89,11 +89,11 @@ module.exports = class MessageEvent extends Event {
                     }
                 };
                 function runCmd(client) {
-                    let Context = new Ctx(message, UPrefix, client, cmd.name);
+                    let Context = new Ctx({ message, prefix: UPrefix, client, subCommand: false });
                     if (cmd.subCommands.length >= 1) {
-                        let CMD = cmd.subCommands.find(e => e.aliases.includes(`${Context.input.args[0]}`.toLowerCase()) || e.rawName == `${Context.input.args[0]}`.toLowerCase());
-                        if (CMD) {
-                            CMD.run(new Ctx(message, UPrefix, client, cmd.name, true));
+                        let subCommand = cmd.subCommands.find(e => e.aliases.includes(`${Context.input.args[0]}`.toLowerCase()) || e.rawName == `${Context.input.args[0]}`.toLowerCase());
+                        if (subCommand) {
+                            subCommand.run(new Ctx({ message, prefix: UPrefix, client, subCommand: true }));
                         } else {
                             cmd.run(Context);
                         }
