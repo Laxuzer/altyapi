@@ -7,8 +7,9 @@ module.exports = class ReadyEvent extends Event {
             client: client,
             enabled: true,
             run: async () => {
-                const { Emoji } = this.client;
+                const { Emoji, SlashHandler } = this.client;
                 Emoji.init(this.client);
+                SlashHandler.init(this.client);
             }
         })
     }
