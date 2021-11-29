@@ -96,7 +96,7 @@ class Context {
             case "channel":
                 let mention1 = this.message.mentions.channels.map(c => c);
                 let name1 = args.map(v => this.guild.channels.cache.find(c => c.name == v)).filter(v => v);
-                let id1 = args.filter(v => this.guild.channels.cache.has(v));
+                let id1 = args.map(v => this.guild.channels.cache.get(v));
         
                 let all1 = mention1.concat(name1).concat(id1).filter(e => e);
                 if (opt?.all)
@@ -115,7 +115,7 @@ class Context {
                     return all2[0];
             case "user":
                 let mention3 = this.message.mentions.users.map(e => e);
-                let name3 = args.map(v => this.guild.members.cache.find(c => c.user.username == v || c?.displayName == v || c.user.tag == v)).filter(v => v);
+                let name3 = args.map(v => this.guild.members.cache.find(c => c.user.username == v || c?.displayName == v || c.user.tag == v)).filter(v => v).map(e => e.user);
                 let id3 = args.map(v => this.guild.members.cache.get(v)?.user || undefined);
                 let oId3 = args.map(async v => await this.client.users.fetch(v).catch(e => {}))
                 let all3 = mention3.concat(name3).concat(id3).concat(oId3).filter(e => e);
