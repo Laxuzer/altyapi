@@ -11,7 +11,7 @@ class CommandHandler {
     }
 
     /**
-     * @param {commands'|'aliases} [key] 
+     * @param {String} [key='commands'|'aliases'] 
      */
     toArray(key = 'commands') {
         if (key == 'aliases')
