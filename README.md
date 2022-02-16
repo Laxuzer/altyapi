@@ -1,6 +1,6 @@
 # Temiz Altyapı
 
-- **Soru/İstek/Şikayet** ve __daha fazlası__ için [Discord Sunucum](https://discord.gg/VUNbq4SwxY) `Laxuzer#0480`
+- **Soru/İstek/Şikayet** ve __daha fazlası__ için [Discord Sunucum](https://discord.gg/VUNbq4SwxY) `Laxuzer#0001`
 
 - Botu çalıştırmadan önce [`config.json`](src/config.json)'u doldurmalısınız.
 
