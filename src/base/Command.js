@@ -1,7 +1,7 @@
 class Command {
 
     /**
-     * @param {{run: (ctx: import("./Ctx")) => Promise<void> | void, name: string, aliases?: string[], category?: string, description?: string, usage?: string[], enabled: boolean, nsfw?: boolean, cooldown?: Number, permissions?: { developerOnly?: Boolean, ownerOnly?: Boolean, user?: { channel?: import("discord.js").PermissionString[], guild?: import("discord.js").PermissionString[] }, bot?: { channel?: import("discord.js").PermissionString[], guild?: import("discord.js").PermissionString[] } }, subCommands?: [{run: (ctx: import("./Context")) => Promise<void> | void, rawName: string, name?: string, aliases?: string[], description?: string, usage?: string[]}], settings?: {[key: any]}}} param0
+     * @param {{run: (ctx: import("./Ctx")) => Promise<void> | void, name: string, aliases?: string[], category?: string, description?: string, usage?: string[], enabled: boolean, nsfw?: boolean, cooldown?: Number, permissions?: { developerOnly?: Boolean, moderatorRole: Boolean, ownerOnly?: Boolean, user?: { channel?: import("discord.js").PermissionString[], guild?: import("discord.js").PermissionString[] }, bot?: { channel?: import("discord.js").PermissionString[], guild?: import("discord.js").PermissionString[] } }, subCommands?: [{run: (ctx: import("./Context")) => Promise<void> | void, rawName: string, name?: string, aliases?: string[], description?: string, usage?: string[]}], settings?: {[key: any]}}} param0
      */
     constructor({
         name = "empty",
@@ -15,8 +15,9 @@ class Command {
         permissions = {
             developerOnly: false,
             ownerOnly: false,
-            user: [],
-            bot: []
+            moderatorRole: false,
+            user: { channel: [], guild: [] }, 
+            bot: { channel: [], guild: [] }
         },
         subCommands = [],
         settings = {},
