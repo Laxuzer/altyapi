@@ -57,7 +57,7 @@ module.exports = class MessageEvent extends Event {
                         };
                     };
             
-                    if (cmd.permissions.modRole) {
+                    if (cmd.permissions.moderatorRole) {
                         //
                     };
             
