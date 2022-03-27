@@ -7,7 +7,7 @@ const Client = require('./Client');
  */
 module.exports = class Event {
     /** 
-     * @param {{client: Client, name: string, enabled?: boolean, run: (...) => Promise<void> | void}} param1 
+     * @param {{client: Client, name: keyof import('discord.js').ClientEvents, enabled?: boolean, run: (...) => Promise<void> | void}} param1 
      */
     constructor({ 
         client,
