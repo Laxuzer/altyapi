@@ -32,12 +32,12 @@ module.exports = class MessageEvent extends Event {
                 if (cmd.permissions) {
                     if (cmd.permissions.bot) {
                         if (cmd.permissions.bot.channel) {
-                            if (!cmd.permissions.bot.channel.some(a => message.channel.permissionFor(message.guild.me).hasPermission(a))) {
+                            if (!cmd.permissions.bot.channel.some(a => message.channel.permissionsFor(message.guild.me).has(a))) {
                                 passed.push('botChannel');
                             };
                         };
                         if (cmd.permissions.bot.guild) {
-                            if (!cmd.permissions.bot.channel.some(a => message.guild.me.hasPermission(a))) {
+                            if (!cmd.permissions.bot.channel.some(a => message.guild.me.permissions.has(a))) {
                                 passed.push('botGuild');
                             };
                         };
@@ -45,13 +45,13 @@ module.exports = class MessageEvent extends Event {
             
                     if (cmd.permissions.member) {
                         if (cmd.permissions.member.guild) {
-                            if (!cmd.permissions.member.guild.some(a => message.member.hasPermission(a))) {
+                            if (!cmd.permissions.member.guild.some(a => message.member.permissions.has(a))) {
                                 passed.push('mGuild');
                             };
                         };
             
                         if (cmd.permissions.member.channel) {
-                            if (!cmd.permissions.member.channel.some(a => message.channel.permissionFor(message.member).hasPermission(a))) {
+                            if (!cmd.permissions.member.channel.some(a => message.channel.permissionsFor(message.member).has(a))) {
                                 passed.push('mChannel');
                             };
                         };
